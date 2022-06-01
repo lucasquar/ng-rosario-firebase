@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "ng-rosario-test-firebase": {
+      "hosting": {
+        "ng-rosario-test-firebase": [
+          "ng-rosario-test-firebase"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "ng-rosario-test-firebase"
+  }
+}

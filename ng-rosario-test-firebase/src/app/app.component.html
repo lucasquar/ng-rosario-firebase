@@ -1,0 +1,5 @@
+<ul>
+    <li *ngFor="let comment of comments$ | async">
+        {{ comment.description }} - {{ comment.date }}
+    </li>
+</ul>

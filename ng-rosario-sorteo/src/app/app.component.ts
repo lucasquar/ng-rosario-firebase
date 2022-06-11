@@ -12,7 +12,7 @@ import { mergeMap, of, take } from 'rxjs';
 })
 export class AppComponent implements OnInit {
 
-  public user!: User;
+  public user!: User | undefined;
   public isParticipating = false;
 
   public form = this.formBuilder.group({
@@ -49,7 +49,7 @@ export class AppComponent implements OnInit {
   }
 
   public logout() {
-    signOut(this.auth);
+    signOut(this.auth).then(() => this.user = undefined);
   }
 
   public onSubmit() {

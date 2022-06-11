@@ -3,7 +3,7 @@
     <div>
         <img src="{{ user.photoURL }}">
     </div>
-    <form [formGroup]="form" (submit)="onSubmit()" *ngIf="!isParticipating; else isParticipating">
+    <form [formGroup]="form" (submit)="onSubmit()" *ngIf="!isParticipating; else participating">
 
         <label for="first-name">Apodo: </label>
         <input id="first-name" type="text" placeholder="Tu apodo" formControlName="nickname">
@@ -27,6 +27,6 @@
     <button (click)="login()">Iniciar Sesion</button>
 </ng-template>
 
-<ng-template #isParticipating>
+<ng-template #participating>
     Gracias por participar
 </ng-template>

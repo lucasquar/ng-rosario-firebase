@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "ng-rosario-sorteo": {
+      "hosting": {
+        "ng-rosario-sorteo": [
+          "ng-rosario-sorteo"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "ng-rosario-sorteo"
+  }
+}

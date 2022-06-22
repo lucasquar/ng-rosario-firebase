@@ -1,0 +1,13 @@
+<div class="score">
+    <input type="range" [value]="talkValue">
+</div>
+
+
+<div class="game-layout">
+    <app-participant-table [participants]="dataSource"></app-participant-table>
+    <app-comments-table [comments]="comments"></app-comments-table>
+</div>
+
+<div class="game-container">
+    <button (click)="chooseWinner()">Sortear</button>
+</div>

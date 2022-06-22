@@ -1,0 +1,10 @@
+<div class="container">
+    <ng-container *ngFor="let participant of participants; trackBy: trackById">
+        <div class="avatar">
+            <img src="{{ participant?.imageSrc }}" />
+            <div class="name">
+                {{ participant?.nickname }}
+            </div>
+        </div>
+    </ng-container>
+</div>

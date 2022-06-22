@@ -1,0 +1,7 @@
+<div class="container">
+    <ng-container *ngFor="let item of comments; trackBy: trackByUserId">
+        <div class="speech left">
+            {{ item.comment }}
+        </div>
+    </ng-container>
+</div>

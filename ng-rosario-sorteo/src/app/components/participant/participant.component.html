@@ -1,0 +1,28 @@
+<div *ngIf="user">
+    <h1>Hola {{ user.displayName }}!</h1>
+    <div>
+        <img src="{{ user.photoURL }}">
+    </div>
+    <form [formGroup]="form" (submit)="onSubmit()" *ngIf="!isParticipating; else participating">
+
+        <label for="first-name">Apodo: </label>
+        <input id="first-name" type="text" placeholder="Tu apodo" formControlName="nickname">
+        <br>
+        <label for="last-name">Mostrar Imagen: </label>
+        <input id="last-name" type="checkbox" formControlName="displayImage">
+        <br>
+        <label for="last-name">Valoracion: </label>
+        <input id="last-name" type="range" formControlName="valuation">
+        <br>
+        <label for="last-name">Comentario: </label>
+        <textarea placeholder="Me encanto la charla!" id="last-name" type="text" formControlName="comment"></textarea>
+        <br>
+        <button type="submit" [disabled]="form.invalid">Participar!</button>
+    </form>
+    <br>
+    <button (click)="logout()">Salir</button>
+</div>
+
+<ng-template #participating>
+    Gracias por participar
+</ng-template>

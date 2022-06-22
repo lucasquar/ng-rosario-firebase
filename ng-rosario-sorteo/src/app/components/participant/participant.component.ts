@@ -35,7 +35,6 @@ export class ParticipantComponent implements OnInit {
   ngOnInit(): void {
     user(this.auth).pipe(
       mergeMap(user => {
-        console.log((user))
         if (user) {
           this.user = user;
           return collectionData(query(this.participantsCollection, where('userId', '==', this.user.uid)));
@@ -43,7 +42,6 @@ export class ParticipantComponent implements OnInit {
         return of(null);
       })
     ).subscribe((result: any) => {
-      console.log((result))
       if(result?.length > 0) {
         this.isParticipating = true;
       }

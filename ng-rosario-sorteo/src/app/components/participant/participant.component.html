@@ -1,28 +1,71 @@
-<div *ngIf="user">
-    <h1>Hola {{ user.displayName }}!</h1>
-    <div>
-        <img src="{{ user.photoURL }}">
-    </div>
-    <form [formGroup]="form" (submit)="onSubmit()" *ngIf="!isParticipating; else participating">
+<div class="container" *ngIf="user">
+  <img class="img-rounded mt" src="{{ user.photoURL }}" />
+  <h1>Hola {{ user.displayName }}!</h1>
 
-        <label for="first-name">Apodo: </label>
-        <input id="first-name" type="text" placeholder="Tu apodo" formControlName="nickname">
-        <br>
-        <label for="last-name">Mostrar Imagen: </label>
-        <input id="last-name" type="checkbox" formControlName="displayImage">
-        <br>
-        <label for="last-name">Valoracion: </label>
-        <input id="last-name" type="range" formControlName="valuation">
-        <br>
-        <label for="last-name">Comentario: </label>
-        <textarea placeholder="Me encanto la charla!" id="last-name" type="text" formControlName="comment"></textarea>
-        <br>
-        <button type="submit" [disabled]="form.invalid">Participar!</button>
+  <mat-card>
+    <form
+      (submit)="onSubmit()"
+      [formGroup]="form"
+      *ngIf="!isParticipating; else participating"
+      autocomplete="off"
+    >
+      <mat-form-field appearance="fill" class="w-100">
+        <mat-label>Apodo</mat-label>
+        <input
+          matInput
+          id="first-name"
+          formControlName="nickname"
+          type="text"
+        />
+      </mat-form-field>
+      <br />
+      <mat-checkbox color="primary" formControlName="displayImage">
+        Usar imagen de Google
+      </mat-checkbox>
+      <br />
+      <br />
+      <label>Qué te pareció la charla?</label>
+      <mat-slider
+        color="primary"
+        thumbLabel
+        tickInterval="5"
+        step="5"
+        min="0"
+        max="100"
+        aria-label="units"
+        formControlName="valuation"
+      ></mat-slider>
+      <br />
+      <mat-form-field appearance="fill" class="w-100">
+        <mat-label>Comentario</mat-label>
+        <textarea
+          matInput
+          formControlName="comment"
+          type="text"
+          rows="5"
+        ></textarea>
+      </mat-form-field>
+      <br />
+      <button
+        class="participate-button"
+        mat-raised-button
+        color="primary"
+        type="submit"
+        [disabled]="form.invalid"
+      >
+        Participar!
+      </button>
     </form>
-    <br>
-    <button (click)="logout()">Salir</button>
+  </mat-card>
+  <br />
+  <button mat-raised-button class="logout-button">
+    <mat-icon>logout</mat-icon> Salir
+  </button>
 </div>
 
 <ng-template #participating>
-    Gracias por participar
+  <div class="participating">
+    <h2>Ya estás participando.</h2>
+    <h3>Gracias por tu feedback!</h3>
+  </div>
 </ng-template>

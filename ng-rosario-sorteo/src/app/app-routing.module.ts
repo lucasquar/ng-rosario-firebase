@@ -8,10 +8,11 @@ import { GameLayoutComponent } from './components/game-layout/game-layout.compon
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
 
 const routes: Routes = [
-  { path: '', component: ParticipantComponent },
+  { path: 'game', component: GameLayoutComponent, ...canActivate(redirectUnauthorizedToLogin) },
   { path: 'login', component: LoginComponent },
   { path: 'participant', component: ParticipantComponent, ...canActivate(redirectUnauthorizedToLogin) },
-  { path: 'game', component: GameLayoutComponent, ...canActivate(redirectUnauthorizedToLogin) }
+  { path: '',   redirectTo: '/participant', pathMatch: 'full' },
+  { path: '**', component: ParticipantComponent},
 ];
 
 @NgModule({

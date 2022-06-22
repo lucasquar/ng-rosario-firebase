@@ -1,14 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
 
-@import url('https://fonts.googleapis.com/css2?family=Kdam+Thmor+Pro&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Kdam+Thmor+Pro&display=swap");
 html,
 body {
-    height: 100%;
+  height: 100%;
 }
 
 body {
-    margin: 0;
-    font-family: 'Kdam Thmor Pro', sans-serif;
-    background-color: #12181b;
-    color: #b2becd;
+  margin: 0;
+  font-family: "Kdam Thmor Pro", sans-serif;
+  background-color: #12181b;
+  color: #b2becd;
+}
+
+.mt {
+  margin-top: 1rem;
 }

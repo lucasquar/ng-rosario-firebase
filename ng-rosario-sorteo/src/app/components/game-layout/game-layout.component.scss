@@ -32,3 +32,31 @@ mat-slider {
     opacity: 1 !important;
   }
 }
+
+.winner-container {
+  bottom: 20px;
+  position: fixed;
+  right: 50%;
+  button {
+    align-items: center;
+    background: red;
+    border-radius: 50%;
+    border: none;
+    box-shadow: 0 8px 0 rgb(183, 9, 0), 0 15px 20px rgba(0, 0, 0, 0.35);
+    color: whitesmoke;
+    cursor: pointer;
+    display: flex;
+    font-family: "Kdam Thmor Pro", sans-serif;
+    font-size: larger;
+    height: 100px;
+    justify-content: center;
+    outline: none;
+    transition: 0.4s all ease-in;
+    width: 100px;
+  }
+  button:focus {
+    box-shadow: 0 4px 0 rgb(183, 0, 0), 0 8px 6px rgba(0, 0, 0, 0.45);
+    padding-top: 3px;
+    transform: translateY(4px);
+  }
+}

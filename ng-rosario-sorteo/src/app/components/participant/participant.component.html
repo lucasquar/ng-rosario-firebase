@@ -1,5 +1,9 @@
 <div class="container" *ngIf="user">
-  <img class="img-rounded mt" src="{{ user.photoURL }}" />
+  <img
+    class="img-rounded mt"
+    referrerpolicy="no-referrer"
+    src="{{ user.photoURL }}"
+  />
   <h1>Hola {{ user.displayName }}!</h1>
 
   <mat-card>
@@ -12,46 +16,47 @@
       <mat-form-field appearance="fill" class="w-100">
         <mat-label>Apodo</mat-label>
         <input
-          matInput
-          id="first-name"
           formControlName="nickname"
+          id="first-name"
+          matInput
           type="text"
         />
       </mat-form-field>
       <br />
-      <mat-checkbox color="primary" formControlName="displayImage">
+      <mat-slide-toggle color="primary" formControlName="displayImage">
         Usar imagen de Google
-      </mat-checkbox>
+      </mat-slide-toggle>
       <br />
       <br />
       <label>Qué te pareció la charla?</label>
       <mat-slider
-        color="primary"
-        thumbLabel
-        tickInterval="5"
-        step="5"
-        min="0"
-        max="100"
+        [displayWith]="formatLabel"
         aria-label="units"
+        color="primary"
         formControlName="valuation"
+        max="100"
+        min="0"
+        step="1"
+        thumbLabel
+        tickInterval="100"
       ></mat-slider>
       <br />
       <mat-form-field appearance="fill" class="w-100">
         <mat-label>Comentario</mat-label>
         <textarea
-          matInput
           formControlName="comment"
-          type="text"
+          matInput
           rows="5"
+          type="text"
         ></textarea>
       </mat-form-field>
       <br />
       <button
-        class="participate-button"
-        mat-raised-button
-        color="primary"
-        type="submit"
         [disabled]="form.invalid"
+        class="participate-button"
+        color="primary"
+        mat-raised-button
+        type="submit"
       >
         Participar!
       </button>

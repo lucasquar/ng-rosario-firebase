@@ -1,25 +1,25 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { AppComponent } from './app.component';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
-import { environment } from '../environments/environment';
-import { provideAuth, getAuth } from '@angular/fire/auth';
-import { provideFirestore, getFirestore } from '@angular/fire/firestore';
-import { provideStorage, getStorage } from '@angular/fire/storage';
+import { getAuth, provideAuth } from '@angular/fire/auth';
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { getStorage, provideStorage } from '@angular/fire/storage';
 import { ReactiveFormsModule } from '@angular/forms';
-import { AppRoutingModule } from './app-routing.module';
-import { ParticipantComponent } from './components/participant/participant.component';
-import { ParticipantTableComponent } from './components/participant-table/participant-table.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { LoginComponent } from './components/login/login.component';
-import { GameLayoutComponent } from './components/game-layout/game-layout.component';
-import { CommentsTableComponent } from './components/comments-table/comments-table.component';
 import { MatButtonModule } from '@angular/material/button';
-import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
-import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatSliderModule } from '@angular/material/slider';
 import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatSliderModule } from '@angular/material/slider';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { environment } from '../environments/environment';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { CommentsTableComponent } from './components/comments-table/comments-table.component';
+import { GameLayoutComponent } from './components/game-layout/game-layout.component';
+import { LoginComponent } from './components/login/login.component';
+import { ParticipantTableComponent } from './components/participant-table/participant-table.component';
+import { ParticipantComponent } from './components/participant/participant.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +28,7 @@ import { MatIconModule } from '@angular/material/icon';
     ParticipantTableComponent,
     LoginComponent,
     GameLayoutComponent,
-    CommentsTableComponent
+    CommentsTableComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,11 +42,11 @@ import { MatIconModule } from '@angular/material/icon';
     MatButtonModule,
     MatInputModule,
     MatCardModule,
-    MatCheckboxModule,
     MatSliderModule,
-    MatIconModule
+    MatIconModule,
+    MatSlideToggleModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

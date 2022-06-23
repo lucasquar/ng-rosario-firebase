@@ -1,13 +1,23 @@
 <div class="score">
-    <input type="range" [value]="talkValue">
+  <h1>Qué te pareció la charla?</h1>
+  <span class="slider-span">😔</span>
+  <mat-slider
+    [displayWith]="formatLabel"
+    [value]="talkValue"
+    color="primary"
+    max="100"
+    min="0"
+    step="1"
+    thumbLabel
+  ></mat-slider>
+  <span class="slider-span">⭐</span>
 </div>
 
-
 <div class="game-layout">
-    <app-participant-table [participants]="dataSource"></app-participant-table>
-    <app-comments-table [comments]="comments"></app-comments-table>
+  <app-participant-table [participants]="dataSource"></app-participant-table>
+  <app-comments-table [comments]="comments"></app-comments-table>
 </div>
 
 <div class="game-container">
-    <button (click)="chooseWinner()">Sortear</button>
+  <button (click)="chooseWinner()">Sortear</button>
 </div>

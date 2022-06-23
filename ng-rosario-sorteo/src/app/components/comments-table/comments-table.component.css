@@ -1,30 +1,35 @@
 .container {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .speech {
-    color: black;
-    background: lightgray;
-    position: relative;
-    padding: 20px;
-    border-radius: 40px;
-    margin: 1rem;
-    box-shadow: 3px 2px 2px rgba(185, 174, 174, 0.925);
-    max-width: 30%;
+  background: lightgray;
+  border-radius: 40px;
+  box-shadow: 3px 2px 2px rgba(185, 174, 174, 0.925);
+  color: black;
+  margin: 1rem;
+  max-width: 30%;
+  padding: 20px;
+  position: relative;
 }
 
 .speech::after {
-    content: "";
-    border: 20px solid transparent;
-    position: absolute;
+  border: 20px solid transparent;
+  content: "";
+  position: absolute;
 }
 
 .left.speech::after {
-    border-right-color: lightgray;
-    border-left: 0;
-    left: -10px;
-    top: 50%;
-    margin-top: -20px;
+  border-left: 0;
+  border-right-color: lightgray;
+  left: -10px;
+  margin-top: -20px;
+  top: 50%;
+}
+
+h1 {
+  text-align: center;
+  width: 100%;
 }

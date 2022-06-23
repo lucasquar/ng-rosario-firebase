@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Firestore, collection, collectionData } from '@angular/fire/firestore';
+import { collection, collectionData, Firestore } from '@angular/fire/firestore';
 import { IParticipant } from 'src/app/models/participant.interface';
 
 @Component({
   selector: 'app-game-layout',
   templateUrl: './game-layout.component.html',
-  styleUrls: ['./game-layout.component.css']
+  styleUrls: ['./game-layout.component.scss']
 })
 export class GameLayoutComponent implements OnInit {
 
@@ -26,7 +26,7 @@ export class GameLayoutComponent implements OnInit {
 
     setInterval(() => {
       this.talkValue = this.getRandomNumber(0, 100);
-     }, 3000);
+    }, 3000);
   }
 
   public chooseWinner() {
@@ -39,9 +39,19 @@ export class GameLayoutComponent implements OnInit {
     console.log(`The winners are: 1- ${this.dataSource[firstPlace]?.nickname}, 2- ${this.dataSource[secondPlace]?.nickname}, 3- ${this.dataSource[thirdPlace]?.nickname}`);
   }
 
+  public formatLabel(value: number): string | number {
+    if (value === 100) {
+      return `⭐`;
+    } else if (value <= 60) {
+      return `😔`;
+    }
+
+    return Math.round(value);
+  }
+
   public getRandomNumber(min: number, max: number, exclude: number[] = []) {
     let number = Math.floor(Math.random() * (max - min)) + min;
-    while(exclude.find(x => x === number)) {
+    while (exclude.find(x => x === number)) {
       number = Math.floor(Math.random() * (max - min)) + min;
     }
 

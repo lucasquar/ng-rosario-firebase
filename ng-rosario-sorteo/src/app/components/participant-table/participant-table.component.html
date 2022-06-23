@@ -1,7 +1,7 @@
 <h1>Participantes</h1>
 <div class="container">
   <ng-container *ngFor="let participant of participants; trackBy: trackById">
-    <div class="avatar">
+    <div @fade class="avatar">
       <img src="{{ participant?.imageSrc }}" referrerpolicy="no-referrer" />
       <div class="name">
         {{ participant?.nickname }}

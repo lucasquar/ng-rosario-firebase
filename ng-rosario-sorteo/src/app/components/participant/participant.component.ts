@@ -13,8 +13,10 @@ import { IParticipant } from 'src/app/models/participant.interface';
   styleUrls: ['./participant.component.css']
 })
 export class ParticipantComponent implements OnInit {
-  public user!: User | undefined;
+  
+  public isLoading = true;
   public isParticipating = false;
+  public user!: User | undefined;
 
   public form = this.formBuilder.group({
     nickname: ['', Validators.required],
@@ -45,6 +47,7 @@ export class ParticipantComponent implements OnInit {
       if (result?.length > 0) {
         this.isParticipating = true;
       }
+      this.isLoading = false;
     });
   }
 

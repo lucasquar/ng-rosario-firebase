@@ -36,7 +36,7 @@ mat-slider {
 .winner-container {
   bottom: 20px;
   position: fixed;
-  right: 50%;
+  right: calc(50% - 50px);
   button {
     align-items: center;
     background: red;

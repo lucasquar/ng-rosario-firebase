@@ -6,7 +6,7 @@
   />
   <h1>Hola {{ user.displayName }}!</h1>
 
-  <mat-card>
+  <mat-card *ngIf="!isLoading">
     <form
       (submit)="onSubmit()"
       [formGroup]="form"

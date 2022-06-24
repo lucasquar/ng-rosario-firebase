@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { collection, collectionData, Firestore } from '@angular/fire/firestore';
+import { MatDialog } from '@angular/material/dialog';
 import { IParticipant } from 'src/app/models/participant.interface';
+import { WinnersDialogComponent } from '../winners-dialog/winners-dialog.component';
 
 @Component({
   selector: 'app-game-layout',
@@ -11,9 +13,11 @@ export class GameLayoutComponent implements OnInit {
 
   public dataSource: IParticipant[] = [];
   public comments: { userId: string, comment: string }[] = [];
-  public talkValue: number = 80;
 
-  constructor(private firestore: Firestore) { }
+  constructor(
+    private firestore: Firestore,
+    public dialog: MatDialog,
+  ) { }
 
   ngOnInit(): void {
     const participantsCollection = collection(this.firestore, 'participants');
@@ -21,22 +25,30 @@ export class GameLayoutComponent implements OnInit {
       this.dataSource = data as IParticipant[];
       this.comments = this.dataSource.filter(participant => participant.comment.length > 5)
         .map(participant => ({ userId: participant.userId, comment: participant.comment.length > 75 ? participant.comment.slice(0, 75) + '...' : participant.comment }));
-      this.talkValue = this.dataSource.map(participant => participant.valuation).reduce((partialSum, a) => partialSum + a, 0) / this.dataSource.length;
     });
 
     setInterval(() => {
-      this.talkValue = this.getRandomNumber(0, 100);
-    }, 3000);
+      this.dataSource.push({
+        imageSrc: 'https://i.pravatar.cc/300',
+        nickname: String(Math.random()),
+        userId: String(Math.random()),
+        comment: "",
+        valuation: Math.random() * 100
+      });
+    }, 3000)
+  }
+
+  public get talkValue() {
+    return this.dataSource.map(participant => participant.valuation).reduce((partialSum, a) => partialSum + a, 0) / this.dataSource.length;
   }
 
   public chooseWinner() {
-    const dataSourceSize = this.dataSource.length;
+    const participants = [...this.dataSource];
 
-    const firstPlace = this.getRandomNumber(0, dataSourceSize);
-    const secondPlace = this.getRandomNumber(0, dataSourceSize, [firstPlace]);
-    const thirdPlace = this.getRandomNumber(0, dataSourceSize, [firstPlace, secondPlace]);
-
-    console.log(`The winners are: 1- ${this.dataSource[firstPlace]?.nickname}, 2- ${this.dataSource[secondPlace]?.nickname}, 3- ${this.dataSource[thirdPlace]?.nickname}`);
+    this.dialog.open(WinnersDialogComponent, {
+      data: { participants },
+      minWidth: '75%'
+    });
   }
 
   public formatLabel(value: number): string | number {
@@ -47,15 +59,6 @@ export class GameLayoutComponent implements OnInit {
     }
 
     return Math.round(value);
-  }
-
-  public getRandomNumber(min: number, max: number, exclude: number[] = []) {
-    let number = Math.floor(Math.random() * (max - min)) + min;
-    while (exclude.find(x => x === number)) {
-      number = Math.floor(Math.random() * (max - min)) + min;
-    }
-
-    return number;
   }
 
 }

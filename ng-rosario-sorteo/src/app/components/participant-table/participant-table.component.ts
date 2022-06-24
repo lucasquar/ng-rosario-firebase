@@ -28,15 +28,7 @@ export class ParticipantTableComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    setInterval(() => {
-      this.participants.push({
-        imageSrc: 'https://i.pravatar.cc/300',
-        nickname: String(Math.random()),
-        userId: String(Math.random()),
-        comment: "",
-        valuation: 80
-      });
-    }, 3000)
+    
   }
 
   trackById(index: number, item: IParticipant): string {

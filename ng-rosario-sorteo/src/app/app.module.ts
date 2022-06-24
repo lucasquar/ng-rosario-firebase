@@ -6,6 +6,8 @@ import { getStorage, provideStorage } from '@angular/fire/storage';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
@@ -20,6 +22,8 @@ import { GameLayoutComponent } from './components/game-layout/game-layout.compon
 import { LoginComponent } from './components/login/login.component';
 import { ParticipantTableComponent } from './components/participant-table/participant-table.component';
 import { ParticipantComponent } from './components/participant/participant.component';
+import { WinnersDialogComponent } from './components/winners-dialog/winners-dialog.component';
+
 
 @NgModule({
   declarations: [
@@ -29,6 +33,7 @@ import { ParticipantComponent } from './components/participant/participant.compo
     LoginComponent,
     GameLayoutComponent,
     CommentsTableComponent,
+    WinnersDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,6 +50,8 @@ import { ParticipantComponent } from './components/participant/participant.compo
     MatSliderModule,
     MatIconModule,
     MatSlideToggleModule,
+    MatDialogModule,
+    MatDividerModule
   ],
   providers: [],
   bootstrap: [AppComponent],

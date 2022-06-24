@@ -1,0 +1,20 @@
+<h1 mat-dialog-title>Los ganadores son...</h1>
+<div mat-dialog-content>
+  <div class="winner-container">
+    <img src="../../../assets/images/first-place.png" />
+    <img class="avatar" src="{{ firstPlace.imageSrc }}" />
+    <h1 class="winner-name">{{ firstPlace.nickname }}</h1>
+  </div>
+  <mat-divider></mat-divider>
+  <div class="winner-container">
+    <img src="../../../assets/images/second-place.png" />
+    <img class="avatar" src="{{ secondPlace.imageSrc }}" />
+    <h1 class="winner-name">{{ secondPlace.nickname }}</h1>
+  </div>
+  <mat-divider></mat-divider>
+  <div class="winner-container">
+    <img src="../../../assets/images/third-place.png" />
+    <img class="avatar" src="{{ thirdPlace.imageSrc }}" />
+    <h1 class="winner-name">{{ thirdPlace.nickname }}</h1>
+  </div>
+</div>

@@ -26,16 +26,6 @@ export class GameLayoutComponent implements OnInit {
       this.comments = this.dataSource.filter(participant => participant.comment.length > 5)
         .map(participant => ({ userId: participant.userId, comment: participant.comment.length > 75 ? participant.comment.slice(0, 75) + '...' : participant.comment }));
     });
-
-    setInterval(() => {
-      this.dataSource.push({
-        imageSrc: 'https://i.pravatar.cc/300',
-        nickname: String(Math.random()),
-        userId: String(Math.random()),
-        comment: "",
-        valuation: Math.random() * 100
-      });
-    }, 3000)
   }
 
   public get talkValue() {
@@ -47,7 +37,8 @@ export class GameLayoutComponent implements OnInit {
 
     this.dialog.open(WinnersDialogComponent, {
       data: { participants },
-      minWidth: '75%'
+      disableClose: true,
+      minWidth: '75%',
     });
   }
 

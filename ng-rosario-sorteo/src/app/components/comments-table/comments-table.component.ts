@@ -11,14 +11,7 @@ export class CommentsTableComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
-    setInterval(() => {
-      this.comments?.push({
-        userId: `${Math.random()}`,
-        comment: `Comment nro ${Math.random()}`
-      });
-    }, 3000);
-  }
+  ngOnInit(): void { }
 
   public trackByUserId(index: number, comment: any): string {
     return comment.userId;

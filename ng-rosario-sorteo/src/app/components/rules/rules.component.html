@@ -1,0 +1,68 @@
+<div class="container">
+  <div class="conReglas">
+    <h1>Con Reglas</h1>
+    <textarea
+      matInput
+      [(ngModel)]="inputConReglas"
+      rows="5"
+      placeholder="Texto"
+    ></textarea>
+    <br />
+    <button mat-flat-button color="primary" (click)="crearConReglas()">
+      Crear
+    </button>
+    <hr />
+    <table>
+      <thead>
+        <th>Texto</th>
+        <th></th>
+      </thead>
+      <tbody>
+        <ng-container
+          *ngFor="let doc of conReglasCollection$ | async; trackBy: trackById"
+        >
+          <tr *ngIf="doc.texto">
+            <td>{{ doc.texto }}</td>
+            <td>
+              <button mat-icon-button (click)="eliminarConReglas(doc.id)">
+                <mat-icon color="warn">delete</mat-icon>
+              </button>
+            </td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+  </div>
+  <div class="sinReglas">
+    <h1>Sin Reglas</h1>
+    <textarea
+      matInput
+      [(ngModel)]="inputSinReglas"
+      rows="5"
+      placeholder="Texto"
+    ></textarea>
+    <br />
+    <button mat-flat-button color="primary" (click)="crearSinReglas()">Crear</button>
+    <hr />
+    <table>
+      <thead>
+        <th>Texto</th>
+        <th></th>
+      </thead>
+      <tbody>
+        <ng-container
+          *ngFor="let doc of sinReglasCollection$ | async; trackBy: trackById"
+        >
+        <tr>
+            <td>{{ doc.texto }}</td>
+            <td>
+              <button mat-icon-button (click)="eliminarsinReglas(doc.id)">
+                <mat-icon color="warn">delete</mat-icon>
+              </button>
+            </td>
+        </tr>
+        </ng-container>
+      </tbody>
+    </table>
+  </div>
+</div>

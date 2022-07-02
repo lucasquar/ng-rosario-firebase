@@ -3,7 +3,7 @@ import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getAuth, provideAuth } from '@angular/fire/auth';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { getStorage, provideStorage } from '@angular/fire/storage';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -22,7 +22,9 @@ import { GameLayoutComponent } from './components/game-layout/game-layout.compon
 import { LoginComponent } from './components/login/login.component';
 import { ParticipantTableComponent } from './components/participant-table/participant-table.component';
 import { ParticipantComponent } from './components/participant/participant.component';
+import { RulesComponent } from './components/rules/rules.component';
 import { WinnersDialogComponent } from './components/winners-dialog/winners-dialog.component';
+import { ErrorComponent } from './components/error/error.component';
 
 
 @NgModule({
@@ -34,6 +36,8 @@ import { WinnersDialogComponent } from './components/winners-dialog/winners-dial
     GameLayoutComponent,
     CommentsTableComponent,
     WinnersDialogComponent,
+    RulesComponent,
+    ErrorComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,6 +46,7 @@ import { WinnersDialogComponent } from './components/winners-dialog/winners-dial
     provideFirestore(() => getFirestore()),
     provideStorage(() => getStorage()),
     ReactiveFormsModule,
+    FormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatButtonModule,

@@ -1,74 +1,41 @@
 <div class="container" *ngIf="user">
-  <img
-    class="img-rounded mt"
-    referrerpolicy="no-referrer"
-    src="{{ user.photoURL }}"
-  />
-  <h1>Hola {{ user.displayName }}!</h1>
+    <img class="img-rounded mt" referrerpolicy="no-referrer" src="{{ user.photoURL }}" />
+    <h1>Hola {{ user.displayName }}!</h1>
 
-  <mat-card *ngIf="!isLoading">
-    <form
-      (submit)="onSubmit()"
-      [formGroup]="form"
-      *ngIf="!isParticipating; else participating"
-      autocomplete="off"
-    >
-      <mat-form-field appearance="fill" class="w-100">
-        <mat-label>Apodo</mat-label>
-        <input
-          formControlName="nickname"
-          id="first-name"
-          matInput
-          type="text"
-        />
-      </mat-form-field>
-      <br />
-      <mat-slide-toggle color="primary" formControlName="displayImage">
-        Usar imagen de Google
-      </mat-slide-toggle>
-      <br />
-      <br />
-      <label>Qué te pareció la charla?</label>
-      <mat-slider
-        [displayWith]="formatLabel"
-        color="primary"
-        formControlName="valuation"
-        max="100"
-        min="0"
-        step="1"
-        thumbLabel
-      ></mat-slider>
-      <br />
-      <mat-form-field appearance="fill" class="w-100">
-        <mat-label>Comentario</mat-label>
-        <textarea
-          formControlName="comment"
-          matInput
-          rows="5"
-          type="text"
-        ></textarea>
-      </mat-form-field>
-      <br />
-      <button
-        [disabled]="form.invalid"
-        class="participate-button"
-        color="primary"
-        mat-raised-button
-        type="submit"
-      >
+    <mat-card *ngIf="!isLoading">
+        <form (submit)="onSubmit()" [formGroup]="form" *ngIf="!isParticipating; else participating" autocomplete="off">
+            <mat-form-field appearance="fill" class="w-100">
+                <mat-label>Apodo</mat-label>
+                <input formControlName="nickname" id="first-name" matInput type="text" />
+            </mat-form-field>
+            <br />
+            <mat-slide-toggle color="primary" formControlName="displayImage">
+                Usar imagen de Google
+            </mat-slide-toggle>
+            <br />
+            <br />
+            <label>Qué te pareció la charla?</label>
+            <mat-slider [displayWith]="formatLabel" color="primary" formControlName="valuation" max="100" min="0" step="1" thumbLabel></mat-slider>
+            <br />
+            <mat-form-field appearance="fill" class="w-100">
+                <mat-label>Comentario</mat-label>
+                <textarea formControlName="comment" matInput rows="5" type="text"></textarea>
+            </mat-form-field>
+            <br />
+            <button [disabled]="form.invalid" class="participate-button" color="primary" mat-raised-button type="submit">
         Participar!
       </button>
-    </form>
-  </mat-card>
-  <br />
-  <button mat-raised-button class="logout-button">
-    <mat-icon>logout</mat-icon> Salir
+        </form>
+    </mat-card>
+    <br />
+    <button mat-raised-button class="logout-button" (click)="logout()">
+    <mat-icon>logout</mat-icon>Salir
   </button>
 </div>
 
 <ng-template #participating>
-  <div class="participating">
-    <h2>Ya estás participando.</h2>
-    <h3>Gracias por tu feedback!</h3>
-  </div>
+    <div class="participating">
+        <h2>Ya estás participando.</h2>
+        <h3>Gracias por tu feedback!</h3>
+    </div>
 </ng-template>
